@@ -13,13 +13,3 @@ export function Providers({ children }: { children: React.ReactNode }) {
     </QueryClientProvider>
   );
 }
-
-// Update frontend/app/layout.tsx to wrap with Providers:
-import { Providers } from './providers';
-
-// In the body:
-<body>
-  <Providers>
-    {/* nav and main content */}
-  </Providers>
-</body>

@@ -20,14 +20,14 @@ let FavoritesController = class FavoritesController {
     constructor(favoritesService) {
         this.favoritesService = favoritesService;
     }
-    getFavorites() {
-        return this.favoritesService.getAllFavorites();
+    async getFavorites() {
+        return await this.favoritesService.getAllFavorites();
     }
-    addFavorite(movie) {
-        return this.favoritesService.addFavorite(movie);
+    async addFavorite(movie) {
+        return await this.favoritesService.addFavorite(movie);
     }
-    removeFavorite(imdbID) {
-        return this.favoritesService.removeFavorite(imdbID);
+    async removeFavorite(imdbID) {
+        return await this.favoritesService.removeFavorite(imdbID);
     }
 };
 exports.FavoritesController = FavoritesController;
@@ -35,14 +35,14 @@ __decorate([
     (0, common_1.Get)(),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], FavoritesController.prototype, "getFavorites", null);
 __decorate([
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], FavoritesController.prototype, "addFavorite", null);
 __decorate([
     (0, common_1.Delete)(':imdbID'),
@@ -50,7 +50,7 @@ __decorate([
     __param(0, (0, common_1.Param)('imdbID')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], FavoritesController.prototype, "removeFavorite", null);
 exports.FavoritesController = FavoritesController = __decorate([
     (0, common_1.Controller)('favorites'),

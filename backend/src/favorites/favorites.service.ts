@@ -1,38 +1,49 @@
 // backend/src/favorites/favorites.service.ts
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { Favorite } from './favorite.entity';
 
 @Injectable()
 export class FavoritesService {
-  // M5: In-memory storage
-  private favorites = new Map();
+  constructor(
+    @InjectRepository(Favorite)
+    private favoritesRepository: Repository<Favorite>,
+  ) {}
 
-  constructor() {
-    // M5: Seed data for testing
-    this.favorites.set('tt0468569', {
-      imdbID: 'tt0468569',
-      Title: 'The Dark Knight',
-      Year: '2008',
-      Poster: 'https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_SX300.jpg',
+  async getAllFavorites() {
+    return await this.favoritesRepository.find();
+  }
+
+  async addFavorite(movie: any) {
+    const existingFavorite = await this.favoritesRepository.findOne({
+      where: { imdbID: movie.imdbID }
     });
-  }
-
-  getAllFavorites() {
-    return Array.from(this.favorites.values());
-  }
-
-  addFavorite(movie: any) {
-    if (this.favorites.has(movie.imdbID)) {
+    
+    if (existingFavorite) {
       return { error: 'Movie already in favorites' };
     }
-    this.favorites.set(movie.imdbID, movie);
-    return movie;
+
+    const favorite = this.favoritesRepository.create({
+      imdbID: movie.imdbID,
+      Title: movie.Title,
+      Year: movie.Year,
+      Poster: movie.Poster,
+    });
+
+    return await this.favoritesRepository.save(favorite);
   }
 
-  removeFavorite(imdbID: string) {
-    if (!this.favorites.has(imdbID)) {
+  async removeFavorite(imdbID: string) {
+    const favorite = await this.favoritesRepository.findOne({
+      where: { imdbID }
+    });
+    
+    if (!favorite) {
       return { error: 'Movie not found in favorites' };
     }
-    this.favorites.delete(imdbID);
+
+    await this.favoritesRepository.remove(favorite);
     return { success: true };
   }
 }

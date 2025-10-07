@@ -7,10 +7,23 @@ export class MoviesController {
   constructor(private readonly moviesService: MoviesService) {}
 
   @Get('search')
-  async search(@Query('q') query: string) {
+  async search(
+    @Query('q') query: string,
+    @Query('page') page?: string  // Add page parameter
+  ) {
     if (!query) {
-      return { movies: [], error: 'Query parameter is required' };
+      return { 
+        movies: [], 
+        error: 'Query parameter is required',
+        totalResults: 0,
+        currentPage: 1,
+        totalPages: 0
+      };
     }
-    return this.moviesService.searchMovies(query);
+    
+    // Parse page number, default to 1
+    const pageNumber = page ? parseInt(page, 10) : 1;
+    
+    return this.moviesService.searchMovies(query, pageNumber);
   }
 }

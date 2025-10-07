@@ -20,19 +20,27 @@ let MoviesController = class MoviesController {
     constructor(moviesService) {
         this.moviesService = moviesService;
     }
-    async search(query) {
+    async search(query, page) {
         if (!query) {
-            return { movies: [], error: 'Query parameter is required' };
+            return {
+                movies: [],
+                error: 'Query parameter is required',
+                totalResults: 0,
+                currentPage: 1,
+                totalPages: 0
+            };
         }
-        return this.moviesService.searchMovies(query);
+        const pageNumber = page ? parseInt(page, 10) : 1;
+        return this.moviesService.searchMovies(query, pageNumber);
     }
 };
 exports.MoviesController = MoviesController;
 __decorate([
     (0, common_1.Get)('search'),
     __param(0, (0, common_1.Query)('q')),
+    __param(1, (0, common_1.Query)('page')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
+    __metadata("design:paramtypes", [String, String]),
     __metadata("design:returntype", Promise)
 ], MoviesController.prototype, "search", null);
 exports.MoviesController = MoviesController = __decorate([

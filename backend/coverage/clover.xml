@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1759860673058" clover="3.2.0">
+  <project timestamp="1759860673059" name="All files">
+    <metrics statements="79" coveredstatements="17" conditionals="28" coveredconditionals="4" methods="16" coveredmethods="6" elements="123" coveredelements="27" complexity="0" loc="79" ncloc="79" packages="3" files="10" classes="10"/>
+    <package name="src">
+      <metrics statements="25" coveredstatements="9" conditionals="4" coveredconditionals="3" methods="4" coveredmethods="3"/>
+      <file name="app.controller.ts" path="/home/tish/thas/MHP-Takeaway-Home/backend/src/app.controller.ts">
+        <metrics statements="6" coveredstatements="6" conditionals="4" coveredconditionals="3" methods="2" coveredmethods="2"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="cond" truecount="3" falsecount="1"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+      </file>
+      <file name="app.module.ts" path="/home/tish/thas/MHP-Takeaway-Home/backend/src/app.module.ts">
+        <metrics statements="7" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="2" count="0" type="stmt"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+      </file>
+      <file name="app.service.ts" path="/home/tish/thas/MHP-Takeaway-Home/backend/src/app.service.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+      </file>
+      <file name="main.ts" path="/home/tish/thas/MHP-Takeaway-Home/backend/src/main.ts">
+        <metrics statements="9" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="2" count="0" type="stmt"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.favorites">
+      <metrics statements="27" coveredstatements="8" conditionals="8" coveredconditionals="1" methods="8" coveredmethods="3"/>
+      <file name="favorites.controller.ts" path="/home/tish/thas/MHP-Takeaway-Home/backend/src/favorites/favorites.controller.ts">
+        <metrics statements="10" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="4" coveredmethods="0"/>
+        <line num="2" count="0" type="stmt"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="7" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+      </file>
+      <file name="favorites.module.ts" path="/home/tish/thas/MHP-Takeaway-Home/backend/src/favorites/favorites.module.ts">
+        <metrics statements="4" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="2" count="0" type="stmt"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+      </file>
+      <file name="favorites.service.ts" path="/home/tish/thas/MHP-Takeaway-Home/backend/src/favorites/favorites.service.ts">
+        <metrics statements="13" coveredstatements="8" conditionals="4" coveredconditionals="1" methods="4" coveredmethods="3"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="20" count="2" type="stmt"/>
+        <line num="24" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="27" count="1" type="stmt"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="32" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="33" count="0" type="stmt"/>
+        <line num="35" count="0" type="stmt"/>
+        <line num="36" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.movies">
+      <metrics statements="27" coveredstatements="0" conditionals="16" coveredconditionals="0" methods="4" coveredmethods="0"/>
+      <file name="movies.controller.ts" path="/home/tish/thas/MHP-Takeaway-Home/backend/src/movies/movies.controller.ts">
+        <metrics statements="8" coveredstatements="0" conditionals="6" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="2" count="0" type="stmt"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="7" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="11" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+      </file>
+      <file name="movies.module.ts" path="/home/tish/thas/MHP-Takeaway-Home/backend/src/movies/movies.module.ts">
+        <metrics statements="4" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="2" count="0" type="stmt"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+      </file>
+      <file name="movies.service.ts" path="/home/tish/thas/MHP-Takeaway-Home/backend/src/movies/movies.service.ts">
+        <metrics statements="15" coveredstatements="0" conditionals="10" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="2" count="0" type="stmt"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="7" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="8" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="21" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="22" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="39" count="0" type="stmt"/>
+        <line num="40" count="0" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>

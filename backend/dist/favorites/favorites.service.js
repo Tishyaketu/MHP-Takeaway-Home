@@ -8,40 +8,53 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.FavoritesService = void 0;
 const common_1 = require("@nestjs/common");
+const typeorm_1 = require("@nestjs/typeorm");
+const typeorm_2 = require("typeorm");
+const favorite_entity_1 = require("./favorite.entity");
 let FavoritesService = class FavoritesService {
-    favorites = new Map();
-    constructor() {
-        this.favorites.set('tt0468569', {
-            imdbID: 'tt0468569',
-            Title: 'The Dark Knight',
-            Year: '2008',
-            Poster: 'https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_SX300.jpg',
+    favoritesRepository;
+    constructor(favoritesRepository) {
+        this.favoritesRepository = favoritesRepository;
+    }
+    async getAllFavorites() {
+        return await this.favoritesRepository.find();
+    }
+    async addFavorite(movie) {
+        const existingFavorite = await this.favoritesRepository.findOne({
+            where: { imdbID: movie.imdbID }
         });
-    }
-    getAllFavorites() {
-        return Array.from(this.favorites.values());
-    }
-    addFavorite(movie) {
-        if (this.favorites.has(movie.imdbID)) {
+        if (existingFavorite) {
             return { error: 'Movie already in favorites' };
         }
-        this.favorites.set(movie.imdbID, movie);
-        return movie;
+        const favorite = this.favoritesRepository.create({
+            imdbID: movie.imdbID,
+            Title: movie.Title,
+            Year: movie.Year,
+            Poster: movie.Poster,
+        });
+        return await this.favoritesRepository.save(favorite);
     }
-    removeFavorite(imdbID) {
-        if (!this.favorites.has(imdbID)) {
+    async removeFavorite(imdbID) {
+        const favorite = await this.favoritesRepository.findOne({
+            where: { imdbID }
+        });
+        if (!favorite) {
             return { error: 'Movie not found in favorites' };
         }
-        this.favorites.delete(imdbID);
+        await this.favoritesRepository.remove(favorite);
         return { success: true };
     }
 };
 exports.FavoritesService = FavoritesService;
 exports.FavoritesService = FavoritesService = __decorate([
     (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [])
+    __param(0, (0, typeorm_1.InjectRepository)(favorite_entity_1.Favorite)),
+    __metadata("design:paramtypes", [typeorm_2.Repository])
 ], FavoritesService);
 //# sourceMappingURL=favorites.service.js.map

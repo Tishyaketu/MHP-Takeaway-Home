@@ -10,27 +10,33 @@ export interface Movie {
   Poster: string | null;
 }
 
-// M1: Search movies
-export const searchMovies = async (query: string) => {
+export interface SearchResponse {
+  movies: Movie[];
+  totalResults: number;
+  currentPage: number;
+  totalPages: number;
+  error?: string;
+}
+
+// Update search to include page parameter
+export const searchMovies = async (query: string, page: number = 1): Promise<SearchResponse> => {
   const { data } = await axios.get(`${API_URL}/movies/search`, {
-    params: { q: query },
+    params: { q: query, page },
   });
   return data;
 };
 
-// M3: Get favorites
+// Keep existing favorites functions unchanged
 export const getFavorites = async (): Promise<Movie[]> => {
   const { data } = await axios.get(`${API_URL}/favorites`);
   return data;
 };
 
-// M2: Add to favorites
 export const addFavorite = async (movie: Movie) => {
   const { data } = await axios.post(`${API_URL}/favorites`, movie);
   return data;
 };
 
-// M2/M3: Remove from favorites
 export const removeFavorite = async (imdbID: string) => {
   await axios.delete(`${API_URL}/favorites/${imdbID}`);
 };

@@ -8,20 +8,20 @@ export class FavoritesController {
 
   // M4: GET /favorites
   @Get()
-  getFavorites() {
-    return this.favoritesService.getAllFavorites();
+  async getFavorites() {
+    return await this.favoritesService.getAllFavorites();
   }
 
   // M4: POST /favorites
   @Post()
-  addFavorite(@Body() movie: any) {
-    return this.favoritesService.addFavorite(movie);
+  async addFavorite(@Body() movie: any) {
+    return await this.favoritesService.addFavorite(movie);
   }
 
   // M4: DELETE /favorites/:imdbID
   @Delete(':imdbID')
   @HttpCode(204)
-  removeFavorite(@Param('imdbID') imdbID: string) {
-    return this.favoritesService.removeFavorite(imdbID);
+  async removeFavorite(@Param('imdbID') imdbID: string) {
+    return await this.favoritesService.removeFavorite(imdbID);
   }
 }

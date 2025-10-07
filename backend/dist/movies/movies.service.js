@@ -15,20 +15,32 @@ const axios_1 = __importDefault(require("axios"));
 let MoviesService = class MoviesService {
     apiKey = process.env.OMDB_API_KEY || '';
     baseUrl = process.env.OMDB_BASE_URL || '';
-    async searchMovies(query) {
+    async searchMovies(query, page = 1) {
         try {
             const response = await axios_1.default.get(this.baseUrl, {
                 params: {
                     apikey: this.apiKey,
                     s: query,
                     type: 'movie',
+                    page: page,
                 },
             });
             if (response.data.Response === 'False') {
                 if (response.data.Error === 'Movie not found!') {
-                    return { movies: [] };
+                    return {
+                        movies: [],
+                        totalResults: 0,
+                        currentPage: page,
+                        totalPages: 0
+                    };
                 }
-                return { movies: [], error: response.data.Error };
+                return {
+                    movies: [],
+                    error: response.data.Error,
+                    totalResults: 0,
+                    currentPage: page,
+                    totalPages: 0
+                };
             }
             const movies = response.data.Search.map((movie) => ({
                 imdbID: movie.imdbID,
@@ -36,11 +48,24 @@ let MoviesService = class MoviesService {
                 Year: movie.Year,
                 Poster: movie.Poster === 'N/A' ? null : movie.Poster,
             }));
-            return { movies };
+            const totalResults = parseInt(response.data.totalResults) || 0;
+            const totalPages = Math.ceil(totalResults / 10);
+            return {
+                movies,
+                totalResults,
+                currentPage: page,
+                totalPages
+            };
         }
         catch (error) {
             console.error('OMDb API error:', error);
-            return { movies: [], error: 'Failed to fetch movies' };
+            return {
+                movies: [],
+                error: 'Failed to fetch movies',
+                totalResults: 0,
+                currentPage: page,
+                totalPages: 0
+            };
         }
     }
 };
